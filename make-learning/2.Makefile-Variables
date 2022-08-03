@@ -1,0 +1,26 @@
+.PHONY: print-variables
+
+# Set variables
+SHELL=bash
+ENV=qa
+DIRECT_VAR=1
+CUR_DIR:=$(PWD)  #set variable using command
+CUR_ENV_DIR:=$(PWD)-${ENV}
+CUR_ENV_DIR_WITH_QUOTE:=\"$(PWD)-${ENV}\"
+
+#load varible from property file
+include */Months.property
+
+all: print-variables
+
+print-variables:
+	@echo "Clean target called ${ENV}"
+	@echo ${SHELL}
+	@echo ${CUR_DIR}
+	@echo ${CUR_ENV_DIR}
+	@echo ${CUR_ENV_DIR_WITH_QUOTE}
+	@echo ${1}
+# Indirect variable access	
+	@echo ${${DIRECT_VAR}}
+
+	

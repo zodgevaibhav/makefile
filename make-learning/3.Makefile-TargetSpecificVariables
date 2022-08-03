@@ -1,0 +1,38 @@
+NAME = "Default ENV"
+
+SHELL=bash
+
+
+########################## Target Based Variables ################
+deploy-dev: NAME=docker-registry.dev.com
+deploy-qa: NAME=docker-registry.qa.com
+deploy-uat: NAME=docker-registry.uat.com
+deploy-prod: NAME=docker-registry.prod.com
+
+build: deploy-${ENV}
+
+deploy-%:build/%.yaml
+	@echo "Deploying application on ${ENV} using registry ${NAME}"
+
+build/%.yaml:tmp/.%.yaml
+# 	Target Name
+	@echo $@ 
+
+#	First Pre-requisite Target name
+	@echo $<
+	@cat $< > $@
+	ls
+
+tmp/.${ENV}.yaml:
+	@touch $@
+	@echo "Deployment data" >> $@
+
+########################## Pre-requisite Target variable ################
+
+target: pre-requisite-target1 pre-requisite-target2
+		@echo $<
+
+pre-requisite-target1:
+
+pre-requisite-target2:
+	

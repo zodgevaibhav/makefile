@@ -1,0 +1,6 @@
+.PHONY: clean
+
+	
+print-property-files: 
+# print the file names with 
+	@echo $(wildcard */*.property)

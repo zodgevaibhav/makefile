@@ -1,0 +1,17 @@
+.PHONY: clean
+
+all: clean compile
+
+clean:
+	@echo "Compile target called"
+compile: 
+	@echo "Compile target called"
+
+build : clean compile
+	@echo "Build target called"
+
+test :
+	@echo "test target called"
+
+install :
+	@echo "$@ target called"

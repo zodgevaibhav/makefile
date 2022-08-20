@@ -1,17 +1,21 @@
-.PHONY: clean
+.DEFAULT_GOAL := all
 
-all: clean compile
+all: clean compile build install
 
 clean:
-	@echo "Compile target called"
+	echo "Clean target called"
+
 compile: 
-	@echo "Compile target called"
+	echo "Compile target called"
 
 build : clean compile
-	@echo "Build target called"
+	echo "Build target called"
 
 test :
-	@echo "test target called"
+	echo "test target called"
 
 install :
-	@echo "$@ target called"
+	echo "$@ target called"
+
+print :
+	echo "$(MAKEFILE_LIST)"

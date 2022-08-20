@@ -1,0 +1,22 @@
+all: clean c-files/add.o c-files/hello.o c-files/square.o c-files/tmp/hello.o c-files/tmp/square.o
+
+clean:
+	@echo "Removing *.o"
+	@rm -rf *.o
+
+c-files/add.o: c-files/add.c
+	@echo "Compiling $< and generating $@"
+	@gcc $< -o c-files/add.o
+
+c-files/tmp/square.o: c-files/square.c |c-files/tmp
+	@echo "Compiling $< and generating $@"
+	@gcc $< -o $@
+
+c-files/tmp/hello.o:c-files/hello.c |c-files/tmp
+	@echo "Compiling $< and generating $@"
+	@gcc $< -o $@
+
+c-files/tmp:
+	mkdir -p $@
+
+

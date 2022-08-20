@@ -1,0 +1,20 @@
+all: clean add.o hello.o c-files/square.o
+
+clean:
+	@echo "Removing *.o"
+	@rm -rf *.o
+
+add.o: c-files/add.c
+	@echo "Compiling $< and generating $@"
+	@gcc c-files/add.c -o c-files/add.out
+
+hello.o: c-files/hello.c
+	@echo "Compiling $< and generating $@"
+	@gcc $< -o c-files/hello.out
+
+c-files/square.o: c-files/square.c
+	@echo "Compiling $< and generating $@"
+	@gcc $< -o $@
+
+
+
